@@ -2,8 +2,10 @@ import discord
 from discord.ext import commands
 import platform
  
-bot=commands.Bot(command_prefix="A")
+bot=commands.Bot(command_prefix="#")
 invitelink="https://discord.com/oauth2/authorize?client_id=746682350712127558&scope=bot&permissions=2146958847"
+prefix="#"
+name="Made by AmanisLive"
 
 async def owner(ctx):
     return ctx.author.id==608178624129925141
@@ -20,17 +22,17 @@ async def on_message(message):
     if(message.author==bot.user):
         return
     elif(bot.user.mentioned_in(message)):
-        await message.channel.send("Prefix is ` A `")
+        await message.channel.send(f"Prefix is ` {prefix} `")
         
 @bot.event
 async def on_member_join(member):
-    channel=discord.utils.get(member.guild.text_channels,id=747097152060391448)
+    channel=discord.utils.get(member.guild.text_channels,id=748402791583842339)
     server=member.guild
     await channel.send(f"{member.name} just joined {server.name}")
     
 @bot.event
 async def on_member_remove(member):
-    channel=discord.utils.get(member.guild.text_channels,id=747097152060391448)
+    channel=discord.utils.get(member.guild.text_channels,id=748402791583842339)
     server=member.guild
     await channel.send(f"{member.name} just left {server.name}")
     
@@ -58,7 +60,7 @@ async def info(ctx,user:discord.User=None):
         e=discord.Embed(color=0xFF0000)
         e.add_field(name="Name",value=name)
         e.add_field(name="Id",value=id)
-        e.set_footer(text="Made by AmanisLive")
+        e.set_footer(text=f"{name}")
         await ctx.send(embed=e)
         
 @bot.command()
@@ -105,7 +107,7 @@ async def binfo(ctx):
     e.add_field(name="Python version",value=pyv)
     e.add_field(name="OS",value=botos)
     e.add_field(name="Discord version",value=discordv)
-    e.set_footer(text="Made by AmanisLive")
+    e.set_footer(text=f"{name}")
     await ctx.send(embed=e)
     
 @bot.command()
@@ -122,20 +124,20 @@ bot.remove_command('help')
 @bot.command()
 async def help(ctx):
     e=discord.Embed(color=0xFFFF00)
-    e.add_field(name="Abinfo",value="You can see the bot info.")
-    e.add_field(name="Asay",value="Say Something with bot.")
-    e.add_field(name="Aping",value="Shows bot latency.")
-    e.add_field(name="Aadd {1} {2}",value="Adds 2 numbers.")
-    e.add_field(name="Asub {1} {2}",value="Subtracts 2 numbers.")
-    e.add_field(name="Amultiply {1} {2}",value="Multiplies 2 numbers.")
-    e.add_field(name="Adivide {1} {2}",value="Divides 2 numbers.")
-    e.add_field(name="Ainfo {user}",value="Shows info about a user.")
-    e.add_field(name="Ainvite",value="Gives the link to invite this bot.")
-    e.add_field(name="Anick {user}",value="Changes the nickname of a user.")
-    e.add_field(name="Aavatar {user}",value="Shows the avatar of a user.")
-    e.add_field(name="Akick",value="Kick the member if you have admin permission.")
-    e.add_field(name="Aban",value="Ban the member if you have admin permission.")
-    e.set_footer(text="Made by AmanisLive")
+    e.add_field(name=f"{prefix}binfo",value="You can see the bot info.")
+    e.add_field(name=f"{prefix}say",value="Say Something with bot.")
+    e.add_field(name=f"{prefix}ping",value="Shows bot latency.")
+    e.add_field(name=f"{prefix}Aadd {1} {2}",value="Adds 2 numbers.")
+    e.add_field(name=f"{prefix}sub {1} {2}",value="Subtracts 2 numbers.")
+    e.add_field(name=f"{prefix}multiply {1} {2}",value="Multiplies 2 numbers.")
+    e.add_field(name=f"{prefix}divide {1} {2}",value="Divides 2 numbers.")
+    e.add_field(name=f"{prefix}info (user)",value="Shows info about a user.")
+    e.add_field(name=f"{prefix}invite",value="Gives the link to invite this bot.")
+    e.add_field(name=f"{prefix}nick (user)",value="Changes the nickname of a user.")
+    e.add_field(name=f"{prefix}avatar (user)",value="Shows the avatar of a user.")
+    e.add_field(name=f"{prefix}kick",value="Kick the member if you have admin permission.")
+    e.add_field(name=f"{prefix}ban",value="Ban the member if you have admin permission.")
+    e.set_footer(text=f"{name}")
     await ctx.send(embed=e)
 
 
