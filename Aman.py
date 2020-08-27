@@ -6,6 +6,7 @@ bot=commands.Bot(command_prefix="#")
 invitelink="https://discord.com/oauth2/authorize?client_id=746682350712127558&scope=bot&permissions=2146958847"
 prefix="#"
 name="Made by AmanisLive"
+Token="NzQ2NjgyMzUwNzEyMTI3NTU4.X0D4IQ.Bi7fMsILE-Zg8e8R0j7eJJuJ4Yw"
 
 async def owner(ctx):
     return ctx.author.id==608178624129925141
@@ -74,12 +75,6 @@ async def say(ctx, *args):
     await ctx.message.delete()
     await ctx.send(mesg)
     
-@bot.command(pass_context = True)
-async def im(ctx,*args):
-    img = ' '.join(args)
-    await ctx.message.delete()
-    await ctx.send(img)
-    
 @bot.command()
 async def invite(ctx):
 	await ctx.send(invitelink)
@@ -118,7 +113,15 @@ async def nick(ctx,member:discord.Member,*,name):
     
 @bot.command()
 async def avatar(ctx,member:discord.Member):
-    await ctx.send(member.avatar_url)
+    name=f{"user.name"}
+    id=f{"user.id"}
+    av=f{"member.avatar_url"}
+    e=discord.Embed(color=0xFFFF00)
+    e.add_field(name="Name",value=name)
+    e.add_field(name="",value=id)
+    e.add_field(name="",value=av)
+    e.set_footer(test="")
+    await ctx.send(embed=e)
 	
 bot.remove_command('help')
 @bot.command()
@@ -152,4 +155,4 @@ async def help(ctx):
 
 
 
-bot.run('NzQ2NjgyMzUwNzEyMTI3NTU4.X0D4IQ.Bi7fMsILE-Zg8e8R0j7eJJuJ4Yw')
+bot.run(f'{Token}')
