@@ -113,15 +113,7 @@ async def nick(ctx,member:discord.Member,*,name):
     
 @bot.command()
 async def avatar(ctx,member:discord.Member):
-    name=f{"user.name"}
-    id=f{"user.id"}
-    av=f{"member.avatar_url"}
-    e=discord.Embed(color=0xFFFF00)
-    e.add_field(name="Name",value=name)
-    e.add_field(name="",value=id)
-    e.add_field(name="",value=av)
-    e.set_footer(test="")
-    await ctx.send(embed=e)
+    await ctx.send(member.avatar_url)
 	
 bot.remove_command('help')
 @bot.command()
