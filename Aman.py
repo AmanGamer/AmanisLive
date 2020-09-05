@@ -6,10 +6,10 @@ bot=commands.Bot(command_prefix="#")
 invitelink="https://discord.com/oauth2/authorize?client_id=746682350712127558&scope=bot&permissions=2146958847"
 prefix="#"
 name="Made by AmanisLive"
-Token="NzQ2NjgyMzUwNzEyMTI3NTU4.X0D4IQ.Bi7fMsILE-Zg8e8R0j7eJJuJ4Yw"
+Token="Your bot token"
 
 async def owner(ctx):
-    return ctx.author.id==608178624129925141
+    return ctx.author.id==owner id
      
 @bot.event
 async def on_ready():
