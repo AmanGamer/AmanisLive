@@ -3,7 +3,7 @@ from discord.ext import commands
 import platform
  
 bot=commands.Bot(command_prefix="#")
-invitelink="https://discord.com/oauth2/authorize?client_id=746682350712127558&scope=bot&permissions=2146958847"
+invitelink="your bot Invite link"
 prefix="#"
 name="Made by AmanisLive"
 Token="Your bot token"
