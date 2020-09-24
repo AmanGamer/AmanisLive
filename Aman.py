@@ -9,15 +9,6 @@ prefix="#"
 name="Made by Rohan Op"
 Token="NzU4NTUyOTkxNTY0NDMxNDMw.X2wnhg.jCgg58JS1dr5y4zCyasozL_yV54"
 
-
-def get_prefix(client, message):
-	with open('prefixes.json', 'r') as f:
-		prefixes = json.load(f)
-		
-		
-	return prefixes[str(message.guild.id)]
-	
-
 async def owner(ctx):
     return ctx.author.id==592262877549690892
      
@@ -34,29 +25,7 @@ async def on_message(message):
         return
     elif(bot.user.mentioned_in(message)):
         await message.channel.send(f"Prefix is ` {prefix} `")
-        
-@bot.event
-async def on_guild_join(guild):
-    with open('prefixes.json', 'r') as f:
-      prefixes = json.load(f)
-		
-		
-      prefixes[str(guild.id)] = "#"
-	
-	with open('prefixes.json', 'w') as f:
-	       json.dump('prefixes', f, indent=4)
-	       
-@bot.event
-async def on_guild_remove(guild):
-    with open('prefixes.json', 'r') as f:
-    	prefixes = json.load(f)
-		
-		
-	prefixes.pop(str(guild.id))
-	
-    with open('prefixes.json', 'w') as f:
-	     json.dump('prefixes', f, indent=4)  
-        
+              
 @bot.event
 async def on_member_join(member):
     channel=discord.utils.get(member.guild.text_channels,id=748402791583842339)
@@ -68,17 +37,6 @@ async def on_member_remove(member):
     channel=discord.utils.get(member.guild.text_channels,id=748402791583842339)
     server=member.guild
     await channel.send(f"{member.name} just left {server.name}")
-    
-@bot.command()
-async def setprefix(ctx, prefix):
-    with open('prefixes.json', 'r') as f:
-    	prefixes = json.load(f)
-		
-		
-	prefixes[str(ctx.guild.id)] = prefix
-	
-	with open('prefixes.json', 'w') as f:
-	       json.dump('prefixes', f, indent=4)
     
     
 @bot.command()
