@@ -38,7 +38,7 @@ async def on_message(message):
 @bot.event
 async def on_guild_join(guild):
     with open('prefixes.json', 'r') as f:
-	prefixes = json.load(f)
+      prefixes = json.load(f)
 		
 		
 	prefixes[str(message.guild.id)] = "#"
