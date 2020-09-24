@@ -3,18 +3,18 @@ from discord.ext import commands
 import platform
  
 bot=commands.Bot(command_prefix="#")
-invitelink="your bot Invite link"
+invitelink="https://discord.com/api/oauth2/authorize?client_id=758552991564431430&permissions=8&scope=bot"
 prefix="#"
-name="Made by AmanisLive"
+name="Made by Rohan Op"
 Token="NzU4NTUyOTkxNTY0NDMxNDMw.X2wnhg.jCgg58JS1dr5y4zCyasozL_yV54"
 
 async def owner(ctx):
-    return ctx.author.id==owner id
+    return ctx.author.id==592262877549690892
      
 @bot.event
 async def on_ready():
     print("Bot is running!")
-    game=discord.Game("AmanisLive")
+    game=discord.Game("Bot by Rohan Op")
     await bot.change_presence(status=discord.Status.online,activity=game)
     
 @bot.event
@@ -67,7 +67,10 @@ async def info(ctx,user:discord.User=None):
 @bot.command()
 async def ping(ctx):
      pingtime=bot.latency
-     await ctx.send(f"Pong! API Response Time: `{pingtime}`")
+     e=discord.Embed(color=0xFD0000)
+     e.add_field(name="Pong! API Response Time",value=pingtime)
+     e.set_footer(text=f"{name}")
+     await ctx.send(embed=e)
      
 @bot.command(pass_context = True)
 async def say(ctx, *args):
@@ -77,7 +80,11 @@ async def say(ctx, *args):
     
 @bot.command()
 async def invite(ctx):
-	await ctx.send(invitelink)
+	invitelink1=f"{invitelink}"
+	e=discord.Embed(color=0xFF0000)
+	e.add_field(name="INVITE ME",value=invitelink1)
+	e.set_footer(text=f"{name}")
+	await ctx.send(embed=e)
 	
 @bot.command()
 @commands.check(owner)
