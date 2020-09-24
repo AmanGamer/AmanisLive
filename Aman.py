@@ -54,8 +54,8 @@ async def on_guild_remove(guild):
 		
 	prefixes.pop(str(guild.id))
 	
-	with open('prefixes.json', 'w') as f:
-	       json.dump('prefixes', f, indent=4)  
+    with open('prefixes.json', 'w') as f:
+	     json.dump('prefixes', f, indent=4)  
         
 @bot.event
 async def on_member_join(member):
