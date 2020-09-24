@@ -3,7 +3,7 @@ import json
 from discord.ext import commands
 import platform
  
-bot=commands.Bot(command_prefix=get_prefix)
+bot=commands.Bot(command_prefix="#")
 invitelink="https://discord.com/api/oauth2/authorize?client_id=758552991564431430&permissions=8&scope=bot"
 prefix="#"
 name="Made by Rohan Op"
