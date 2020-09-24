@@ -1,6 +1,9 @@
 import discord
+import json
 from discord.ext import commands
 import platform
+
+def get_prefix(client, message):
  
 bot=commands.Bot(command_prefix="#")
 invitelink="https://discord.com/api/oauth2/authorize?client_id=758552991564431430&permissions=8&scope=bot"
@@ -15,7 +18,7 @@ async def owner(ctx):
 async def on_ready():
     print("Bot is running!")
     game=discord.Game("Bot by Rohan Op")
-    await bot.change_presence(status=discord.Status.online,activity=game)
+    await bot.change_presence(status=discord.Status.idle,activity=game)
     
 @bot.event
 async def on_message(message):
@@ -121,6 +124,20 @@ async def nick(ctx,member:discord.Member,*,name):
 @bot.command()
 async def avatar(ctx,member:discord.Member):
     await ctx.send(member.avatar_url)
+    
+@bot.command(name='whois')
+async def userinfo(ctx, member: discord.Member):
+    embed = discord.Embed(title= f'{member}', color=0xfcf8f8)
+    embed.add_field(name='**Username:**', value=member.name, inline=False)
+    embed.add_field(name='**Discriminator:**', value=member.discriminator, inline=False)
+    embed.add_field(name='**ID:**', value=member.id, inline=False)
+    embed.add_field(name='**Status:**', value=member.status, inline=False)
+    embed.add_field(name="**Highest Role:**", value=member.top_role, inline=False)
+    embed.add_field(name='**Account Created:**', value=member.created_at.__format__('%A, %d. %B %Y | %H:%M:%S'), inline=False)
+    embed.add_field(name='**Server Join Date:**', value=member.joined_at.__format__('%A, %d. %B %Y | %H:%M:%S'), inline=False)
+    embed.set_thumbnail(url=member.avatar_url)
+    embed.set_footer(text=f"{name}")
+    await ctx.send(content=None, embed=embed)
 	
 bot.remove_command('help')
 @bot.command()
@@ -137,6 +154,7 @@ async def help(ctx):
     e.add_field(name=f"{prefix}invite",value="Gives the link to invite this bot.")
     e.add_field(name=f"{prefix}nick (user)",value="Changes the nickname of a user.")
     e.add_field(name=f"{prefix}avatar (user)",value="Shows the avatar of a user.")
+    e.add_fied(name=f"{prefix}whois (user)",value="Full details of user.")
     e.add_field(name=f"{prefix}kick",value="Kick the member if you have admin permission.")
     e.add_field(name=f"{prefix}ban",value="Ban the member if you have admin permission.")
     e.set_footer(text=f"{name}")
