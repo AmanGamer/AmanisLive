@@ -5,7 +5,7 @@ import platform
 
 def get_prefix(client, message):
  
-bot=commands.Bot(command_prefix="#")
+bot=commands.Bot(command_prefix=get_prefix)
 invitelink="https://discord.com/api/oauth2/authorize?client_id=758552991564431430&permissions=8&scope=bot"
 prefix="#"
 name="Made by Rohan Op"
