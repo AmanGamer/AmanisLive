@@ -6,7 +6,7 @@ bot=commands.Bot(command_prefix="#")
 invitelink="your bot Invite link"
 prefix="#"
 name="Made by AmanisLive"
-Token="Your bot token"
+Token="NzU4NTUyOTkxNTY0NDMxNDMw.X2wnhg.jCgg58JS1dr5y4zCyasozL_yV54"
 
 async def owner(ctx):
     return ctx.author.id==owner id
