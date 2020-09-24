@@ -49,7 +49,7 @@ async def on_guild_join(guild):
 @bot.event
 async def on_guild_remove(guild):
     with open('prefixes.json', 'r') as f:
-	prefixes = json.load(f)
+    	prefixes = json.load(f)
 		
 		
 	prefixes.pop(str(guild.id))
@@ -72,7 +72,7 @@ async def on_member_remove(member):
 @bot.command()
 async def setprefix(ctx, prefix):
     with open('prefixes.json', 'r') as f:
-	prefixes = json.load(f)
+    	prefixes = json.load(f)
 		
 		
 	prefixes[str(ctx.guild.id)] = prefix
